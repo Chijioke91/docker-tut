@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  my_backend:
+    build: ./api
+    container_name: my_app_c
+    ports:
+      - 4000:4000
+    volumes:
+      - ./api:/app
+      - ./app/node_modules
+
+  my_frontend:
+    build: ./myblog
+    container_name: myblog_frontend_c
+    ports:
+      - 3000:3000
+    volumes:
+      - ./myblog:/app
+      - ./app/node_modules
+    stdin_open: true
+    tty: true
